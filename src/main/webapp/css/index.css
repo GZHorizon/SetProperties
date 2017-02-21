@@ -1,0 +1,46 @@
+*{
+    font-family: "微软雅黑";
+}
+input,button{
+    outline: none;
+}
+#logo{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    color: #fff;
+}
+.mt80{
+    margin-top: 80px;
+}
+.mt20{
+    margin-top: 20px;
+}
+#installation-path{
+    display: inline-block;
+    width: 600px;
+    color: #474747;
+    margin-right: 25px;
+    vertical-align: -1px;
+}
+ul{
+    list-style: none;
+    padding-left: 20px;
+}
+ul .form-control{
+    display: inline-block;
+    vertical-align: -1px;
+    width: 500px;
+    margin-left: 20px;
+}
+ul li{
+    display: block;
+    margin-bottom: 20px;
+}
+ul li:last-child{
+    margin-bottom: 0;
+}
+#save{
+    margin-left: 20px;
+}

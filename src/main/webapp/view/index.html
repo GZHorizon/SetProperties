@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BS一卡通参数配置工具</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/css/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="/css/jquery-ui.css" rel="stylesheet" />
+    <link href="/css/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="/css/index.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <span id="logo">易科士管理系统</span>
+    </div>
+</nav>
+<div class="container theme-showcase" role="main">
+    <div class="mt80">
+        <input id="installation-path" class="form-control">
+        <button class="btn btn-primary" id="submit"> 确 定 <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button>
+        <button class="btn btn-success" id="save"> 保 存 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+    </div>
+    <div class="main-content">
+        <fieldset class="mt20">
+            <legend>系统数据库配置</legend>
+            <ul id="jdbc">
+            </ul>
+        </fieldset>
+        <fieldset class="mt20">
+            <legend>日志数据库配置</legend>
+            <ul id="log">
+
+            </ul>
+        </fieldset>
+        <fieldset class="mt20">
+            <legend>微信支付宝充值参数配置</legend>
+            <ul id="thirdrecharge">
+
+            </ul>
+        </fieldset>
+    </div>
+</div>
+
+<div id="msg-dialog"><p></p></div>
+<script src="/js/jquery-2.2.0.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>
