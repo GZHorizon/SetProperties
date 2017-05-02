@@ -38,7 +38,7 @@ public class SetPropertiesController {
     public @ResponseBody
     Map<String, Object> getProperties(String url){
 
-        System.out.println(url);
+        System.out.println(url+"url");
 
         return setPropertiesServise.getProperties(url);
     }

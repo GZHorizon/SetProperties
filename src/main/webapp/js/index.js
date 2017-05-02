@@ -17,22 +17,24 @@ $(function(){
                 $('#thirdrecharge').html("");
                 return false;
             }
-            var jdbcHtml =  '<li class="row"><label class="btn  btn-info col-md-2" disabled>jdbc.driver</label><input class="form-control col-md-5" id="jdbcDriver" value="'+data.jdbcvo.driver+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>jdbc.url</label><input class="form-control col-md-5" id="jdbcUrl" value="'+data.jdbcvo.url+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>jdbc.user</label><input class="form-control col-md-5" id="jdbcUser" value="'+data.jdbcvo.user+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>jdbc.password</label><input class="form-control col-md-5" id="jdbcPassword" value="'+data.jdbcvo.password+'"/></li>';
+            var jdbcHtml =  ''
+            for(var k in data.jdbcvo){
+                jdbcHtml = jdbcHtml + '<li class="row"><label class="btn  btn-info col-md-3" disabled>'+k+'</label><input class="form-control col-md-5" id="'+k+'" value="'+data.jdbcvo[k]+'"/></li>';
+            }
             $('#jdbc').html(jdbcHtml)
 
-            var logHtml =   '<li class="row"><label class="btn  btn-info col-md-3" disabled>log4j.appender.DATABASE.driver</label><input class="form-control col-md-5" id="logDriver" value="'+data.logvo.driver+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-3" disabled>log4j.appender.DATABASE.URL</label><input class="form-control col-md-5" id="logUrl" value="'+data.logvo.URL+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-3" disabled>log4j.appender.DATABASE.user</label><input class="form-control col-md-5" id="logUser" value="'+data.logvo.user+'"/></li>'+
-                            '<li class="row"><label class="btn  btn-info col-md-3" disabled>log4j.appender.DATABASE.password</label><input class="form-control col-md-5" id="logPassword" value="'+data.logvo.password+'"/></li>';
+
+            var logHtml =  ''
+            for(var k in data.logvo){
+                logHtml = logHtml + '<li class="row"><label class="btn  btn-info col-md-3" disabled>'+k+'</label><input class="form-control col-md-5" id="'+k+'" value="'+data.logvo[k]+'"/></li>';
+            }
             $('#log').html(logHtml)
+
             if(data.thirdrechargevo.md5Key != null && data.thirdrechargevo.md5Key != "null" && data.thirdrechargevo.md5Key != undefined && data.thirdrechargevo.md5Key != ""){
-                var thirdrechargeHtml =     '<li class="row"><label class="btn  btn-info col-md-2" disabled>md5Key</label><input class="form-control col-md-2" id="md5Key" value="'+data.thirdrechargevo.md5Key+'"/></li>'+
-                                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>desKey</label><input class="form-control col-md-2" id="desKey" value="'+data.thirdrechargevo.desKey+'"/></li>'+
-                                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>csPolling</label><input class="form-control col-md-2" id="csPolling" value="'+data.thirdrechargevo.csPolling+'"/></li>'+
-                                            '<li class="row"><label class="btn  btn-info col-md-2" disabled>csPay</label><input class="form-control col-md-2" id="csPay" value="'+data.thirdrechargevo.csPay+'"/></li>';
+                var thirdrechargeHtml =  ''
+                for(var k in data.thirdrechargevo){
+                    thirdrechargeHtml = thirdrechargeHtml + '<li class="row"><label class="btn  btn-info col-md-3" disabled>'+k+'</label><input class="form-control col-md-5" id="'+k+'" value="'+data.thirdrechargevo[k]+'"/></li>';
+                }
                 $('#thirdrecharge').html(thirdrechargeHtml)
             }
         })
@@ -42,34 +44,37 @@ $(function(){
         $('#msg-dialog p').text("正在修改配置文件，请稍等......");
         $('.ui-dialog-buttonset .button').attr({disabled: "disabled"})
         msgDialog.dialog('open');
-        var url = $('#installation-path').val();
-        var jdbcDriver = $('#jdbcDriver').val();
-        var jdbcUrl = $('#jdbcUrl').val();
-        var jdbcUser = $('#jdbcUser').val();
-        var jdbcPassword = $('#jdbcPassword').val();
-        var logDriver = $('#logDriver').val();
-        var logUrl = $('#logUrl').val();
-        var logUser = $('#logUser').val();
-        var logPassword = $('#logPassword').val();
-        var md5Key = $('#md5Key').val();
-        var desKey = $('#desKey').val();
-        var csPolling = $('#csPolling').val();
-        var csPay = $('#csPay').val();
 
         $.post("saveProperties.do",{
-            url : url,
-            jdbcDriver : jdbcDriver,
-            jdbcUrl : jdbcUrl,
-            jdbcUser : jdbcUser,
-            jdbcPassword : jdbcPassword,
-            logDriver : logDriver,
-            logUrl : logUrl,
-            logUser : logUser,
-            logPassword : logPassword,
-            md5Key : md5Key,
-            desKey : desKey,
-            csPolling : csPolling,
-            csPay : csPay
+            url : $('#installation-path').val(),
+            jdbcDriver : $('#jdbc\\.driver').val(),
+            jdbcUrl : $('#jdbc\\.url').val(),
+            jdbcUser : $('#jdbc\\.user').val(),
+            jdbcPassword : $('#jdbc\\.password').val(),
+
+            jdbcInitialSize : $('#jdbc\\.initialSize').val(),
+            jdbcMaxActive : $('#jdbc\\.maxActive').val(),
+            jdbcMinIdle : $('#jdbc\\.minIdle').val(),
+            jdbcMaxIdle : $('#jdbc\\.maxIdle').val(),
+            jdbcValidationQuery : $('#jdbc\\.validationQuery').val(),
+            jdbcTestOnBorrow : $('#jdbc\\.testOnBorrow').val(),
+            jdbcTestOnReturn : $('#jdbc\\.testOnReturn').val(),
+            jdbcTestWhileIdle : $('#jdbc\\.testWhileIdle').val(),
+            jdbcTimeBetweenEvictionRunsMillis : $('#jdbc\\.timeBetweenEvictionRunsMillis').val(),
+            jdbcNumTestsPerEvictionRun : $('#jdbc\\.numTestsPerEvictionRun').val(),
+            jdbcRemoveAbandoned : $('#jdbc\\.removeAbandoned').val(),
+            jdbcRemoveAbandonedTimeout : $('#jdbc\\.removeAbandonedTimeout').val(),
+            jdbcMaxWait : $('#jdbc\\.maxWait').val(),
+            jdbcDefaultAutoCommit : $('#jdbc\\.defaultAutoCommit').val(),
+            jdbcLogAbandoned : $('#jdbc\\.logAbandoned').val(),
+            logDriver : $('#log4j\\.appender\\.DATABASE\\.driver').val(),
+            logUrl : $('#log4j\\.appender\\.DATABASE\\.URL').val(),
+            logUser : $('#log4j\\.appender\\.DATABASE\\.user').val(),
+            logPassword : $('#log4j\\.appender\\.DATABASE\\.password').val(),
+            md5Key : $('#md5Key').val(),
+            desKey : $('#desKey').val(),
+            csPolling : $('#csPolling').val(),
+            csPay : $('#csPay').val()
         },function(data){
             $('#msg-dialog p').text(data.msg);
             $('.ui-dialog-buttonset .button').removeAttr("disabled")

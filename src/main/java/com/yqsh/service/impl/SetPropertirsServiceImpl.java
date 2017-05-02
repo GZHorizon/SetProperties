@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -30,7 +32,9 @@ public class SetPropertirsServiceImpl implements SetPropertiesServise {
             File fileLog = getFile(url+"\\webapps\\AIOCP\\WEB-INF\\classes\\log4j.properties");
             File fileTR = getFile(url+"\\webapps\\AIOCP\\WEB-INF\\classes\\thirdrecharge.properties");
 
-            map.put("jdbcvo",getPropertiesValue(fileConfig,"jdbc.driver","jdbc.url","jdbc.user","jdbc.password"));
+            map.put("jdbcvo",getPropertiesValue(fileConfig,"jdbc.driver","jdbc.url","jdbc.user","jdbc.password","jdbc.initialSize","jdbc.maxActive","jdbc.minIdle","jdbc.maxIdle",
+                    "jdbc.validationQuery","jdbc.testOnBorrow","jdbc.testOnReturn","jdbc.testWhileIdle","jdbc.timeBetweenEvictionRunsMillis","jdbc.numTestsPerEvictionRun",
+                    "jdbc.removeAbandoned","jdbc.removeAbandonedTimeout","jdbc.maxWait","jdbc.defaultAutoCommit","jdbc.logAbandoned"));
             map.put("logvo",getPropertiesValue(fileLog,"log4j.appender.DATABASE.driver","log4j.appender.DATABASE.URL","log4j.appender.DATABASE.user","log4j.appender.DATABASE.password"));
             map.put("thirdrechargevo",getPropertiesValue(fileTR,"md5Key","desKey","csPolling","csPay"));
 
@@ -69,10 +73,10 @@ public class SetPropertirsServiceImpl implements SetPropertiesServise {
              ) {
 
             String value = prop.getProperty(key);
-            int pos = StringUtils.lastIndexOf(key,".");
+            /*int pos = StringUtils.lastIndexOf(key,".");
             if(pos!=-1){
                 key = key.substring(pos+1);
-            }
+            }*/
             if(StringUtils.isNotBlank(value))
                 map.put(key,value);
         }
@@ -90,16 +94,31 @@ public class SetPropertirsServiceImpl implements SetPropertiesServise {
             writeData(fileConfig, "jdbc.url", properties.getJdbcUrl());
             writeData(fileConfig, "jdbc.user", properties.getJdbcUser());
             writeData(fileConfig, "jdbc.password", properties.getJdbcPassword());
+            writeData(fileConfig, "jdbc.initialSize", properties.getJdbcInitialSize());
+            writeData(fileConfig, "jdbc.maxActive", properties.getJdbcMaxActive());
+            writeData(fileConfig, "jdbc.minIdle", properties.getJdbcMinIdle());
+            writeData(fileConfig, "jdbc.maxIdle", properties.getJdbcMaxIdle());
+            writeData(fileConfig, "jdbc.validationQuery", properties.getJdbcValidationQuery());
+            writeData(fileConfig, "jdbc.testOnBorrow", properties.getJdbcTestOnBorrow());
+            writeData(fileConfig, "jdbc.testOnReturn", properties.getJdbcTestOnReturn());
+            writeData(fileConfig, "jdbc.testWhileIdle", properties.getJdbcTestWhileIdle());
+            writeData(fileConfig, "jdbc.timeBetweenEvictionRunsMillis", properties.getJdbcTimeBetweenEvictionRunsMillis());
+            writeData(fileConfig, "jdbc.numTestsPerEvictionRun", properties.getJdbcNumTestsPerEvictionRun());
+            writeData(fileConfig, "jdbc.removeAbandoned", properties.getJdbcRemoveAbandoned());
+            writeData(fileConfig, "jdbc.removeAbandonedTimeout", properties.getJdbcRemoveAbandonedTimeout());
+            writeData(fileConfig, "jdbc.maxWait", properties.getJdbcMaxWait());
+            writeData(fileConfig, "jdbc.defaultAutoCommit", properties.getJdbcDefaultAutoCommit());
+            writeData(fileConfig, "jdbc.logAbandoned", properties.getJdbcLogAbandoned());
 
             writeData(fileLog, "log4j.appender.DATABASE.driver", properties.getLogDriver());
             writeData(fileLog, "log4j.appender.DATABASE.URL", properties.getLogUrl());
             writeData(fileLog, "log4j.appender.DATABASE.user", properties.getLogUser());
             writeData(fileLog, "log4j.appender.DATABASE.password", properties.getLogPassword());
 
-            writeData(fileTR, "csPay", properties.getCsPay());
-            writeData(fileTR, "csPolling", properties.getCsPolling());
-            writeData(fileTR, "desKey", properties.getDesKey());
-            writeData(fileTR, "md5Key", properties.getMd5Key());
+            if(StringUtils.isNotBlank(properties.getCsPay()))writeData(fileTR, "csPay", properties.getCsPay());
+            if(StringUtils.isNotBlank(properties.getCsPolling()))writeData(fileTR, "csPolling", properties.getCsPolling());
+            if(StringUtils.isNotBlank(properties.getDesKey()))writeData(fileTR, "desKey", properties.getDesKey());
+            if(StringUtils.isNotBlank(properties.getMd5Key()))writeData(fileTR, "md5Key", properties.getMd5Key());
         } catch (IOException e) {
             log.error("=== saveProperties method error ===");
             map.put("msg","修改失败");

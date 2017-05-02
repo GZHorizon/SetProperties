@@ -9,6 +9,21 @@ public class PropertiesVo {
     private String jdbcUrl;
     private String jdbcUser;
     private String jdbcPassword;
+    private String jdbcInitialSize;
+    private String jdbcMaxActive;
+    private String jdbcMinIdle;
+    private String jdbcMaxIdle;
+    private String jdbcValidationQuery;
+    private String jdbcTestOnBorrow;
+    private String jdbcTestOnReturn;
+    private String jdbcTestWhileIdle;
+    private String jdbcTimeBetweenEvictionRunsMillis;
+    private String jdbcNumTestsPerEvictionRun;
+    private String jdbcRemoveAbandoned;
+    private String jdbcRemoveAbandonedTimeout;
+    private String jdbcMaxWait;
+    private String jdbcDefaultAutoCommit;
+    private String jdbcLogAbandoned;
     private String logDriver;
     private String logUrl;
     private String logUser;
@@ -20,6 +35,127 @@ public class PropertiesVo {
 
     public PropertiesVo() {
 
+    }
+
+
+    public String getJdbcInitialSize() {
+        return jdbcInitialSize;
+    }
+
+    public void setJdbcInitialSize(String jdbcInitialSize) {
+        this.jdbcInitialSize = jdbcInitialSize;
+    }
+
+    public String getJdbcMaxActive() {
+        return jdbcMaxActive;
+    }
+
+    public void setJdbcMaxActive(String jdbcMaxActive) {
+        this.jdbcMaxActive = jdbcMaxActive;
+    }
+
+    public String getJdbcMinIdle() {
+        return jdbcMinIdle;
+    }
+
+    public void setJdbcMinIdle(String jdbcMinIdle) {
+        this.jdbcMinIdle = jdbcMinIdle;
+    }
+
+    public String getJdbcMaxIdle() {
+        return jdbcMaxIdle;
+    }
+
+    public void setJdbcMaxIdle(String jdbcMaxIdle) {
+        this.jdbcMaxIdle = jdbcMaxIdle;
+    }
+
+    public String getJdbcValidationQuery() {
+        return jdbcValidationQuery;
+    }
+
+    public void setJdbcValidationQuery(String jdbcValidationQuery) {
+        this.jdbcValidationQuery = jdbcValidationQuery;
+    }
+
+    public String getJdbcTestOnBorrow() {
+        return jdbcTestOnBorrow;
+    }
+
+    public void setJdbcTestOnBorrow(String jdbcTestOnBorrow) {
+        this.jdbcTestOnBorrow = jdbcTestOnBorrow;
+    }
+
+    public String getJdbcTestOnReturn() {
+        return jdbcTestOnReturn;
+    }
+
+    public void setJdbcTestOnReturn(String jdbcTestOnReturn) {
+        this.jdbcTestOnReturn = jdbcTestOnReturn;
+    }
+
+    public String getJdbcTestWhileIdle() {
+        return jdbcTestWhileIdle;
+    }
+
+    public void setJdbcTestWhileIdle(String jdbcTestWhileIdle) {
+        this.jdbcTestWhileIdle = jdbcTestWhileIdle;
+    }
+
+    public String getJdbcTimeBetweenEvictionRunsMillis() {
+        return jdbcTimeBetweenEvictionRunsMillis;
+    }
+
+    public void setJdbcTimeBetweenEvictionRunsMillis(String jdbcTimeBetweenEvictionRunsMillis) {
+        this.jdbcTimeBetweenEvictionRunsMillis = jdbcTimeBetweenEvictionRunsMillis;
+    }
+
+    public String getJdbcNumTestsPerEvictionRun() {
+        return jdbcNumTestsPerEvictionRun;
+    }
+
+    public void setJdbcNumTestsPerEvictionRun(String jdbcNumTestsPerEvictionRun) {
+        this.jdbcNumTestsPerEvictionRun = jdbcNumTestsPerEvictionRun;
+    }
+
+    public String getJdbcRemoveAbandoned() {
+        return jdbcRemoveAbandoned;
+    }
+
+    public void setJdbcRemoveAbandoned(String jdbcRemoveAbandoned) {
+        this.jdbcRemoveAbandoned = jdbcRemoveAbandoned;
+    }
+
+    public String getJdbcRemoveAbandonedTimeout() {
+        return jdbcRemoveAbandonedTimeout;
+    }
+
+    public void setJdbcRemoveAbandonedTimeout(String jdbcRemoveAbandonedTimeout) {
+        this.jdbcRemoveAbandonedTimeout = jdbcRemoveAbandonedTimeout;
+    }
+
+    public String getJdbcMaxWait() {
+        return jdbcMaxWait;
+    }
+
+    public void setJdbcMaxWait(String jdbcMaxWait) {
+        this.jdbcMaxWait = jdbcMaxWait;
+    }
+
+    public String getJdbcDefaultAutoCommit() {
+        return jdbcDefaultAutoCommit;
+    }
+
+    public void setJdbcDefaultAutoCommit(String jdbcDefaultAutoCommit) {
+        this.jdbcDefaultAutoCommit = jdbcDefaultAutoCommit;
+    }
+
+    public String getJdbcLogAbandoned() {
+        return jdbcLogAbandoned;
+    }
+
+    public void setJdbcLogAbandoned(String jdbcLogAbandoned) {
+        this.jdbcLogAbandoned = jdbcLogAbandoned;
     }
 
     public String getUrl() {
